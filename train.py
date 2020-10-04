@@ -54,7 +54,7 @@ def eval_dev(model, ldr, preproc):
     model.set_eval()
 
     for batch in tqdm.tqdm(ldr):
-        print(batch.shape)
+        print(batch)
         preds = model.infer(batch)
         loss = model.loss(batch)
         losses.append(loss.data[0])
