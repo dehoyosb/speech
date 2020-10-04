@@ -36,6 +36,7 @@ RUN pip install Cython \
     SoundFile==0.10.2 \
     tensorboard-logger==0.0.4 \
     tqdm==4.19.4 \
+    pandas \
     phonemizer
 
 #RUN git clone https://github.com/dehoyosb/speech.git && \
