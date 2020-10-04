@@ -26,6 +26,7 @@ RUN apt-get install -y cmake
 RUN pip install Cython \
     cffi==1.11.2 \
     editdistance==0.3.1 \
+    pandas==0.25 \
     numpy==1.13.3 \
     protobuf==3.4.0 \
     py==1.4.34 \
@@ -36,7 +37,6 @@ RUN pip install Cython \
     SoundFile==0.10.2 \
     tensorboard-logger==0.0.4 \
     tqdm==4.19.4 \
-    pandas \
     phonemizer
 
 #RUN git clone https://github.com/dehoyosb/speech.git && \

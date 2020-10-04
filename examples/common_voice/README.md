@@ -13,9 +13,8 @@ Once you have the Common Voice data downloaded, run
 ```
 
 This script will convert the `.mp3` to `.wav` files and store them in the same
-location. You'll need write access to directory where common_voice is stored. It will
-then symlink the timit directory to `./data`. There should be three data json
-files in `data/`:
+location. You'll need write access to directory where common_voice is stored. Inside the common voice data directory
+after the data preparation there should be 3 files:
 
 - `train.json`: 
 - `dev.json`: 
