@@ -54,6 +54,7 @@ def eval_dev(model, ldr, preproc):
     model.set_eval()
 
     for batch in tqdm.tqdm(ldr):
+        print(batch.shape)
         preds = model.infer(batch)
         loss = model.loss(batch)
         losses.append(loss.data[0])
@@ -89,6 +90,7 @@ def run(config):
     model = model_class(preproc.input_dim,
                         preproc.vocab_size,
                         model_cfg)
+    print(use_cuda)
     model.cuda() if use_cuda else model.cpu()
 
     # Optimizer
@@ -129,6 +131,8 @@ if __name__ == "__main__":
     parser.add_argument("--deterministic", default=False,
         action="store_true",
         help="Run in deterministic mode (no cudnn). Only works on GPU.")
+    parser.add_argument("--use_cuda", default=True,
+        help="Use or not use GPU, even if it is available")
     args = parser.parse_args()
 
     with open(args.config, 'r') as fid:
@@ -139,7 +143,10 @@ if __name__ == "__main__":
 
     tb.configure(config["save_path"])
 
-    use_cuda = torch.cuda.is_available()
+    if torch.cuda.is_available() and args.use_cuda:
+        use_cuda = args.use_cuda
+    else:
+        use_cuda = args.use_cuda
 
     if use_cuda and args.deterministic:
         torch.backends.cudnn.enabled = False
