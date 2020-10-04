@@ -1,4 +1,4 @@
-Example using the Common Voice set from Mozilla. It can be downloaded here: https://commonvoice.mozilla.org/en/datasets
+Example using the Common Voice dataset from Mozilla. It can be downloaded here: https://commonvoice.mozilla.org/en/datasets
 
 The data is mapped from 61 to 48 phonemes for training. For final test set
 evaluation the 48 phonemes are again mapped to 39. The phoneme mapping is the
@@ -46,10 +46,3 @@ To score using the reduced phoneme set (39 phonemes) run
 ```
 python examples/common_voice/score.py predictions.json 
 ```
-
-## Results
-
-*NB* for best results with all models, evaluate with a batch size of 1.
-Otherwise the scores can be slightly worse due to the fact that we pad the
-inputs to all be the same length in a given batch.
-
