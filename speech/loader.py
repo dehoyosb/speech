@@ -64,6 +64,9 @@ class Preprocessor():
 
     def preprocess(self, wave_file, text):
         inputs = log_specgram_from_file(wave_file)
+        print(inputs.shape)
+        print(self.mean.shape)
+        print(self.std.shape)
         inputs = (inputs - self.mean) / self.std
         targets = self.encode(text)
         return inputs, targets
