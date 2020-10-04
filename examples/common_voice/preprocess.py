@@ -42,23 +42,6 @@ def load_transcripts(path: str, split:str, use_percentage: float) -> dict:
         data[os.path.join(path,'clips',file_name)] = phonemes
     return data
 
-def split_by_speaker(data, dev_speakers=50):
-
-    def speaker_id(f):
-        return os.path.basename(os.path.dirname(f))
-
-    speaker_dict = collections.defaultdict(list)
-    for k, v in data.items():
-        speaker_dict[speaker_id(k)].append((k, v))
-    speakers = speaker_dict.keys()
-    for t in TEST_SPEAKERS:
-        speakers.remove(t)
-    random.shuffle(speakers)
-    dev = speakers[:dev_speakers]
-    dev = dict(v for s in dev for v in speaker_dict[s])
-    test = dict(v for s in TEST_SPEAKERS for v in speaker_dict[s])
-    return dev, test
-
 def convert_to_wav(path):
     data_helpers.convert_full_set(path, "*.mp3",
                                   new_ext=WAV_EXT,
