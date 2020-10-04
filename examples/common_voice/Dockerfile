@@ -1,9 +1,10 @@
 FROM pytorch/pytorch:0.4.1-cuda9-cudnn7-devel
+#FROM nvidia/cuda:10.2-cudnn7-devel
 
 WORKDIR /workspace
 
 RUN apt-get -y update 
-RUN apt install -y build-essential ffmpeg
+RUN apt install -y build-essential ffmpeg wget
 RUN apt-get install -y \
     manpages-dev \
     libsndfile-dev \
@@ -17,7 +18,7 @@ RUN apt-get install -y \
     lib32ncurses5-dev \
     software-properties-common
     #espeak-ng
-    
+
 RUN add-apt-repository -y ppa:george-edison55/cmake-3.x
 RUN apt-get -y update
 RUN apt-get install -y cmake
