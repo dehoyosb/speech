@@ -17,7 +17,6 @@ RUN apt-get install -y \
     libatlas-base-dev \
     lib32ncurses5-dev \
     software-properties-common
-    #espeak-ng
 
 RUN add-apt-repository -y ppa:george-edison55/cmake-3.x
 RUN apt-get -y update
@@ -38,11 +37,3 @@ RUN pip install Cython \
     tensorboard-logger==0.0.4 \
     tqdm==4.19.4 \
     phonemizer
-
-#RUN git clone https://github.com/dehoyosb/speech.git && \
-#    cd /speech && \
-#    make && \
-#    source setup.sh && \
-#    cd example/common_voice
-
-#CMD [ "/bin/bash", "-c", "data_prep.sh", $data/clip_original]
