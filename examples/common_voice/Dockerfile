@@ -2,19 +2,26 @@ FROM pytorch/pytorch:0.4.1-cuda9-cudnn7-devel
 
 WORKDIR /workspace
 
-RUN apt-get update -y && \
-    #apt-get -y upgrade && \
-    apt install -y build-essential && \
-    apt-get install -y manpages-dev && \
-    apt install -y ffmpeg && \
-    apt-get install -y \
+RUN apt-get -y update 
+RUN apt install -y build-essential ffmpeg
+RUN apt-get install -y \
+    manpages-dev \
     libsndfile-dev \
     portaudio19-dev \
     festival \
     git \
-    mbrola
+    mbrola \
+    python3-dev \
+    libblas-dev \
+    libatlas-base-dev \
+    lib32ncurses5-dev \
+    software-properties-common
     #espeak-ng
-
+    
+RUN add-apt-repository -y ppa:george-edison55/cmake-3.x
+RUN apt-get -y update
+RUN apt-get install -y cmake
+    
 RUN pip install Cython \
     cffi==1.11.2 \
     editdistance==0.3.1 \
@@ -32,6 +39,7 @@ RUN pip install Cython \
 
 #RUN git clone https://github.com/dehoyosb/speech.git && \
 #    cd /speech && \
+#    make && \
 #    source setup.sh && \
 #    cd example/common_voice
 
