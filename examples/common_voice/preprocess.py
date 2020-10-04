@@ -34,7 +34,7 @@ def load_transcripts(path: str, split:str, use_percentage: float) -> dict:
     m60_48, _ = load_phone_map()
     data = {}
     for file_name, text in tqdm(dataset[['path','sentence']].values[:int(use_percentage*(length))]):
-        phn = phonemize(text = text, 
+        phn = phonemize(text = text.encode('ascii', 'ignore').decode('ascii'), 
                         language='en-us',
                         backend='festival',
                         separator=phone_separator).split()
